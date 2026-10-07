@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1200" height="900" fill="#ffffff"/>
+
+  <text x="40" y="48" font-size="26" font-weight="700" fill="#14213d">Wiring diagram: ESP32 + PCA9685 + 6× MG996R servos</text>
+  <text x="40" y="74" font-size="14" fill="#5c677d">Matches the firmware in include/config.h</text>
+
+  <!-- ===== Servo power supply ===== -->
+  <rect x="500" y="92" width="260" height="56" rx="6" fill="#fff1f1" stroke="#d62828" stroke-width="2"/>
+  <text x="630" y="115" font-size="15" font-weight="700" fill="#14213d" text-anchor="middle">Servo power supply</text>
+  <text x="630" y="135" font-size="13" fill="#14213d" text-anchor="middle">5–6 V DC, ≥10 A</text>
+  <text x="548" y="164" font-size="12" fill="#d62828" text-anchor="end">+V</text>
+  <text x="652" y="164" font-size="12" fill="#14213d">GND</text>
+
+  <!-- PSU to PCA terminal block -->
+  <line x1="560" y1="148" x2="560" y2="200" stroke="#d62828" stroke-width="3"/>
+  <line x1="640" y1="148" x2="640" y2="200" stroke="#222" stroke-width="3"/>
+  <!-- bulk capacitor across V+ / GND -->
+  <line x1="560" y1="178" x2="594" y2="178" stroke="#d62828" stroke-width="2"/>
+  <line x1="606" y1="178" x2="640" y2="178" stroke="#222" stroke-width="2"/>
+  <line x1="594" y1="166" x2="594" y2="190" stroke="#14213d" stroke-width="3"/>
+  <path d="M606 166 Q600 178 606 190" fill="none" stroke="#14213d" stroke-width="3"/>
+  <circle cx="560" cy="178" r="3.5" fill="#d62828"/>
+  <circle cx="640" cy="178" r="3.5" fill="#222"/>
+  <text x="770" y="176" font-size="12" fill="#14213d">C1: 1000 µF+, ≥10 V</text>
+  <text x="770" y="191" font-size="12" fill="#5c677d">at the V+ terminal</text>
+  <line x1="612" y1="178" x2="764" y2="178" stroke="#9aa5b8" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <!-- ===== ESP32 ===== -->
+  <rect x="40" y="200" width="250" height="260" rx="8" fill="#eef4ff" stroke="#3a6ea5" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="56" y="228" font-size="16" font-weight="700" fill="#14213d">ESP32 DevKit V1</text>
+  <text x="280" y="255" font-size="13" fill="#14213d" text-anchor="end">3V3</text>
+  <text x="280" y="295" font-size="13" fill="#14213d" text-anchor="end">GND</text>
+  <text x="280" y="335" font-size="13" fill="#14213d" text-anchor="end">GPIO 21 (SDA)</text>
+  <text x="280" y="375" font-size="13" fill="#14213d" text-anchor="end">GPIO 22 (SCL)</text>
+  <text x="115" y="452" font-size="12" fill="#5c677d" text-anchor="middle">USB</text>
+
+  <!-- USB power -->
+  <rect x="40" y="510" width="150" height="50" rx="6" fill="#f4f4f6" stroke="#5c677d" stroke-width="1.5"/>
+  <text x="115" y="531" font-size="13" fill="#14213d" text-anchor="middle">USB 5 V</text>
+  <text x="115" y="549" font-size="12" fill="#5c677d" text-anchor="middle">(PC or adapter)</text>
+  <line x1="115" y1="460" x2="115" y2="510" stroke="#5c677d" stroke-width="3"/>
+  <text x="125" y="490" font-size="11" fill="#5c677d">powers the ESP32 only</text>
+
+  <!-- ===== Logic wires ESP32 -> PCA9685 ===== -->
+  <line x1="290" y1="250" x2="470" y2="250" stroke="#7b3fe4" stroke-width="3"/>
+  <line x1="290" y1="290" x2="470" y2="290" stroke="#222" stroke-width="3"/>
+  <line x1="290" y1="330" x2="470" y2="330" stroke="#1f9d55" stroke-width="3"/>
+  <line x1="290" y1="370" x2="470" y2="370" stroke="#e0a000" stroke-width="3"/>
+  <g fill="#14213d">
+    <circle cx="290" cy="250" r="4"/><circle cx="290" cy="290" r="4"/>
+    <circle cx="290" cy="330" r="4"/><circle cx="290" cy="370" r="4"/>
+    <circle cx="470" cy="250" r="4"/><circle cx="470" cy="290" r="4"/>
+    <circle cx="470" cy="330" r="4"/><circle cx="470" cy="370" r="4"/>
+  </g>
+  <text x="380" y="243" font-size="11" fill="#7b3fe4" text-anchor="middle">3.3 V logic</text>
+
+  <!-- ===== PCA9685 ===== -->
+  <rect x="470" y="200" width="240" height="400" rx="8" fill="#f0faf4" stroke="#2d8a4e" stroke-width="2"/>
+  <text x="590" y="626" font-size="16" font-weight="700" fill="#14213d" text-anchor="middle">PCA9685</text>
+  <text x="590" y="644" font-size="12" fill="#5c677d" text-anchor="middle">16-channel PWM driver, I²C address 0x40</text>
+  <text x="560" y="222" font-size="12" font-weight="700" fill="#d62828" text-anchor="middle">V+</text>
+  <text x="640" y="222" font-size="12" font-weight="700" fill="#14213d" text-anchor="middle">GND</text>
+  <circle cx="560" cy="200" r="4" fill="#d62828"/>
+  <circle cx="640" cy="200" r="4" fill="#222"/>
+  <text x="482" y="255" font-size="13" fill="#14213d">VCC</text>
+  <text x="482" y="295" font-size="13" fill="#14213d">GND</text>
+  <text x="482" y="335" font-size="13" fill="#14213d">SDA</text>
+  <text x="482" y="375" font-size="13" fill="#14213d">SCL</text>
+  <text x="590" y="420" font-size="11" fill="#5c677d" text-anchor="middle">Servo headers get V+</text>
+  <text x="590" y="434" font-size="11" fill="#5c677d" text-anchor="middle">from the terminal block.</text>
+  <text x="590" y="448" font-size="11" fill="#5c677d" text-anchor="middle">Logic GND and terminal</text>
+  <text x="590" y="462" font-size="11" fill="#5c677d" text-anchor="middle">GND are joined on the board.</text>
+
+  <!-- ===== Servo channels ===== -->
+  <text x="805" y="232" font-size="11" fill="#5c677d" text-anchor="middle">3-pin servo cable: PWM / V+ / GND</text>
+
+  <g id="servos" font-size="13">
+    <!-- CH0 -->
+    <text x="700" y="254" fill="#14213d" text-anchor="end">CH0</text>
+    <line x1="710" y1="242" x2="900" y2="242" stroke="#f77f00" stroke-width="2.5"/>
+    <line x1="710" y1="250" x2="900" y2="250" stroke="#d62828" stroke-width="2.5"/>
+    <line x1="710" y1="258" x2="900" y2="258" stroke="#6b3e26" stroke-width="2.5"/>
+    <rect x="900" y="225" width="260" height="50" rx="6" fill="#f5f2ff" stroke="#6a5acd" stroke-width="1.5"/>
+    <text x="916" y="247" font-weight="700" fill="#14213d">Base</text>
+    <text x="916" y="265" font-size="11" fill="#5c677d">MG996R · CH0</text>
+
+    <!-- CH1 -->
+    <text x="700" y="314" fill="#14213d" text-anchor="end">CH1</text>
+    <line x1="710" y1="302" x2="900" y2="302" stroke="#f77f00" stroke-width="2.5"/>
+    <line x1="710" y1="310" x2="900" y2="310" stroke="#d62828" stroke-width="2.5"/>
+    <line x1="710" y1="318" x2="900" y2="318" stroke="#6b3e26" stroke-width="2.5"/>
+    <rect x="900" y="285" width="260" height="50" rx="6" fill="#f5f2ff" stroke="#6a5acd" stroke-width="1.5"/>
+    <text x="916" y="307" font-weight="700" fill="#14213d">Shoulder</text>
+    <text x="916" y="325" font-size="11" fill="#5c677d">MG996R · CH1</text>
+
+    <!-- CH2 -->
+    <text x="700" y="374" fill="#14213d" text-anchor="end">CH2</text>
+    <line x1="710" y1="362" x2="900" y2="362" stroke="#f77f00" stroke-width="2.5"/>
+    <line x1="710" y1="370" x2="900" y2="370" stroke="#d62828" stroke-width="2.5"/>
+    <line x1="710" y1="378" x2="900" y2="378" stroke="#6b3e26" stroke-width="2.5"/>
+    <rect x="900" y="345" width="260" height="50" rx="6" fill="#f5f2ff" stroke="#6a5acd" stroke-width="1.5"/>
+    <text x="916" y="367" font-weight="700" fill="#14213d">Elbow</text>
+    <text x="916" y="385" font-size="11" fill="#5c677d">MG996R · CH2</text>
+
+    <!-- CH3 -->
+    <text x="700" y="434" fill="#14213d" text-anchor="end">CH3</text>
+    <line x1="710" y1="422" x2="900" y2="422" stroke="#f77f00" stroke-width="2.5"/>
+    <line x1="710" y1="430" x2="900" y2="430" stroke="#d62828" stroke-width="2.5"/>
+    <line x1="710" y1="438" x2="900" y2="438" stroke="#6b3e26" stroke-width="2.5"/>
+    <rect x="900" y="405" width="260" height="50" rx="6" fill="#f5f2ff" stroke="#6a5acd" stroke-width="1.5"/>
+    <text x="916" y="427" font-weight="700" fill="#14213d">Wrist Pitch</text>
+    <text x="916" y="445" font-size="11" fill="#5c677d">MG996R · CH3</text>
+
+    <!-- CH4 -->
+    <text x="700" y="494" fill="#14213d" text-anchor="end">CH4</text>
+    <line x1="710" y1="482" x2="900" y2="482" stroke="#f77f00" stroke-width="2.5"/>
+    <line x1="710" y1="490" x2="900" y2="490" stroke="#d62828" stroke-width="2.5"/>
+    <line x1="710" y1="498" x2="900" y2="498" stroke="#6b3e26" stroke-width="2.5"/>
+    <rect x="900" y="465" width="260" height="50" rx="6" fill="#f5f2ff" stroke="#6a5acd" stroke-width="1.5"/>
+    <text x="916" y="487" font-weight="700" fill="#14213d">Wrist Roll</text>
+    <text x="916" y="505" font-size="11" fill="#5c677d">MG996R · CH4</text>
+
+    <!-- CH5 -->
+    <text x="700" y="554" fill="#14213d" text-anchor="end">CH5</text>
+    <line x1="710" y1="542" x2="900" y2="542" stroke="#f77f00" stroke-width="2.5"/>
+    <line x1="710" y1="550" x2="900" y2="550" stroke="#d62828" stroke-width="2.5"/>
+    <line x1="710" y1="558" x2="900" y2="558" stroke="#6b3e26" stroke-width="2.5"/>
+    <rect x="900" y="525" width="260" height="50" rx="6" fill="#f5f2ff" stroke="#6a5acd" stroke-width="1.5"/>
+    <text x="916" y="547" font-weight="700" fill="#14213d">Gripper</text>
+    <text x="916" y="565" font-size="11" fill="#5c677d">MG996R · CH5</text>
+  </g>
+
+  <!-- ===== Legend ===== -->
+  <rect x="40" y="672" width="500" height="212" rx="8" fill="#fafbfc" stroke="#3a6ea5" stroke-width="1.5"/>
+  <text x="58" y="698" font-size="15" font-weight="700" fill="#14213d">Wire colour legend</text>
+  <g font-size="13" fill="#14213d">
+    <line x1="58" y1="719" x2="110" y2="719" stroke="#7b3fe4" stroke-width="4"/><text x="122" y="724">3.3 V logic (ESP32 3V3 → PCA9685 VCC)</text>
+    <line x1="58" y1="743" x2="110" y2="743" stroke="#222" stroke-width="4"/><text x="122" y="748">GND (common ground)</text>
+    <line x1="58" y1="767" x2="110" y2="767" stroke="#1f9d55" stroke-width="4"/><text x="122" y="772">I²C SDA (GPIO 21)</text>
+    <line x1="58" y1="791" x2="110" y2="791" stroke="#e0a000" stroke-width="4"/><text x="122" y="796">I²C SCL (GPIO 22)</text>
+    <line x1="58" y1="815" x2="110" y2="815" stroke="#d62828" stroke-width="4"/><text x="122" y="820">Servo power V+ (5–6 V from the PSU)</text>
+    <line x1="58" y1="839" x2="110" y2="839" stroke="#f77f00" stroke-width="4"/><text x="122" y="844">Servo PWM signal (from the PCA9685)</text>
+    <line x1="58" y1="863" x2="110" y2="863" stroke="#6b3e26" stroke-width="4"/><text x="122" y="868" font-size="13">Servo GND (brown wire on MG996R)</text>
+  </g>
+
+  <!-- ===== Notes ===== -->
+  <rect x="570" y="672" width="590" height="212" rx="8" fill="#fffaf0" stroke="#e0a000" stroke-width="1.5"/>
+  <text x="588" y="698" font-size="15" font-weight="700" fill="#14213d">Notes</text>
+  <g font-size="12.5" fill="#14213d">
+    <text x="588" y="722">1. PCA9685 VCC goes to 3.3 V, never 5 V: the board pulls SDA/SCL up</text>
+    <text x="606" y="738">to VCC, and the ESP32's pins are not 5 V tolerant.</text>
+    <text x="588" y="760">2. Size the PSU for stall current: about 2.5 A per MG996R, so ≥10 A for six.</text>
+    <text x="588" y="782">3. Never power the servos from USB or from the ESP32.</text>
+    <text x="588" y="804">4. Common ground: PSU GND, PCA9685 GND and ESP32 GND must all connect.</text>
+    <text x="588" y="826">5. C1 absorbs current spikes and prevents ESP32 brownout resets.</text>
+    <text x="588" y="848">6. Keep servo power wires short and thick (18 AWG or heavier).</text>
+  </g>
+</svg>
